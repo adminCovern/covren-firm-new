@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== SOVEREIGN VARIABLES ===== */
+:root {
+  --sovereign-black: #000000;
+  --sovereign-dark: #0a0a0a;
+  --sovereign-gray: #1a1a1a;
+  --sovereign-green: #10b981;
+  --sovereign-emerald: #34d399;
+  --sovereign-red: #ef4444;
+  --sovereign-yellow: #f59e0b;
+  
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  
+  --animation-duration: 0.3s;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== GLOBAL RESETS ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--sovereign-black);
+  color: #ffffff;
+  font-family: var(--font-display);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===== SELECTION STYLING ===== */
+::selection {
+  background-color: var(--sovereign-green);
+  color: var(--sovereign-black);
+}
+
+::-moz-selection {
+  background-color: var(--sovereign-green);
+  color: var(--sovereign-black);
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sovereign-dark);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sovereign-gray);
+  border-radius: 0;
+  border: 1px solid var(--sovereign-green);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--sovereign-green);
+}
+
+/* ===== FOCUS STATES ===== */
+:focus {
+  outline: 2px solid var(--sovereign-green);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--sovereign-green);
+  outline-offset: 2px;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  letter-spacing: -0.05em;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse-green {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px var(--sovereign-green), 0 0 10px var(--sovereign-green);
+  }
+  to {
+    box-shadow: 0 0 10px var(--sovereign-green), 0 0 20px var(--sovereign-green);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.animate-pulse-green {
+  animation: pulse-green 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s var(--animation-timing) forwards;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.gradient-sovereign {
+  background: linear-gradient(135deg, var(--sovereign-green) 0%, var(--sovereign-emerald) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-green {
+  background: linear-gradient(135deg, var(--sovereign-green) 0%, var(--sovereign-emerald) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== WAR ROOM EFFECTS ===== */
+.war-room-grid {
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.glitch {
+  position: relative;
+  text-shadow: 0.05em 0 0 var(--sovereign-red), -0.025em -0.05em 0 var(--sovereign-green);
+  animation: glitch 500ms infinite;
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 var(--sovereign-red), -0.025em -0.05em 0 var(--sovereign-green);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 var(--sovereign-red), -0.025em -0.05em 0 var(--sovereign-green);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 var(--sovereign-red), 0.025em 0.025em 0 var(--sovereign-green);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 var(--sovereign-red), 0.025em 0.025em 0 var(--sovereign-green);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 var(--sovereign-red), 0.05em 0 0 var(--sovereign-green);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 var(--sovereign-red), 0.05em 0 0 var(--sovereign-green);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 var(--sovereign-red), -0.025em -0.025em 0 var(--sovereign-green);
+  }
+}
+
+/* ===== COMPONENT STYLES ===== */
+.btn-sovereign {
+  @apply px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-black font-black rounded-lg shadow-2xl shadow-green-500/25 transition-all duration-300;
+}
+
+.btn-sovereign:hover {
+  @apply scale-105 shadow-green-500/50;
+}
+
+.btn-sovereign:active {
+  @apply scale-95;
+}
+
+.card-sovereign {
+  @apply p-8 bg-gradient-to-b from-gray-900/50 to-transparent border border-gray-800 rounded-xl transition-all duration-300;
+}
+
+.card-sovereign:hover {
+  border-color: rgb(34 197 94 / 0.5); /* Tailwind's border-green-500/50 */
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* ===== ACCESSIBILITY ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+.dark {
+  color-scheme: dark;
+}
+
+/* ===== SOVEREIGN OVERLAYS ===== */
+.overlay-scan {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sovereign-green), transparent);
+  animation: scan-line 3s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ===== LOADING STATES ===== */
+.skeleton {
+  background: linear-gradient(90deg, var(--sovereign-gray) 25%, var(--sovereign-dark) 50%, var(--sovereign-gray) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
