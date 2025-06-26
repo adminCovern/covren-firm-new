@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { 
   Shield, Twitter, Linkedin, Github, Mail,
   Phone, MapPin, ArrowUpRight, Activity
-} from 'lucide-react';
+} from 'lucide-react'; 
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
